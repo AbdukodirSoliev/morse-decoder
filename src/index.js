@@ -59,30 +59,27 @@ function decodeLetterToMorse(couple_letter) {
 }
 function decodeWordToMorse(coupled_letters) {
     let morse_word = [];
-    let j = 0;
     for (let couple_letter of coupled_letters) {
         let morse_letter = decodeLetterToMorse(couple_letter);
-        morse_word[j++] = morse_letter;
+        morse_word.push(morse_letter);
     }
     return morse_word;
 }
 function coupleLetters(letters) {
     let couple_letters = [];
-    let k = 0;
     for (let letter of letters) {
         let tmp = '';
         let i = 1;
-        let j = 0;
         let couple = [];
         for (let symbol of letter) {
             tmp += symbol;
             if (i % 2 === 0) {
-                couple[j++] = tmp;
+                couple.push(tmp);
                 tmp = '';
             }
             i++;
         }
-        couple_letters[k++] = couple;
+        couple_letters.push(couple);
     }
     return couple_letters;
 }
@@ -91,17 +88,16 @@ function coupleLetters(letters) {
 function splitByLetters(word) {
     let letter = [];
     let letter_tmp = '';
-    let k = 0;
     
     for (let i = 0, j = 0; i < word.length; i++, j++) {
         if (j === 10) {
-            letter[k++] = letter_tmp;
+            letter.push(letter_tmp);
             letter_tmp = '';
             j = 0;
         }
         letter_tmp += word[i];
     }
-    letter[k++] = letter_tmp;
+    letter.push(letter_tmp);
     
     return letter;
 }
